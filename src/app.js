@@ -1,3 +1,5 @@
+const $ = require('jquery');
+
 $(document).ready(function() {
-    alert('hello');
+    console.log('hello');
 });
