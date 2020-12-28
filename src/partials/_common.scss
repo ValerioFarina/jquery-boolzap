@@ -4,6 +4,16 @@
     box-sizing: border-box;
 }
 
+.float-left {
+    float: left;
+}
+
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 #wrapper {
     display: flex;
     justify-content: center;

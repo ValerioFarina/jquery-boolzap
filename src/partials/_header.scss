@@ -1,0 +1,28 @@
+header {
+    height: 70px;
+    background-color: #e8e8e8;
+}
+
+#header-left,
+#header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#header-left {
+    width: 35%;
+    border-right: 1px solid black;
+
+    .user {
+        display: flex;
+        align-items: center;
+
+        img {
+            display: block;
+            height: 50px;
+            margin-right: 10px;
+        }
+    }
+}

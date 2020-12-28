@@ -1,6 +1,11 @@
 const $ = require('jquery');
 
 $(document).ready(function() {
+    var user = {
+        name: 'Valerio',
+        avatar: '_user'
+    };
+
     var contacts = [
         {
             name: 'Marco',
@@ -160,5 +165,6 @@ $(document).ready(function() {
         }
     ];
 
-    console.log(contacts);
+    $('header .user img').attr('src', 'dist/img/avatar' + user.avatar + '.png');
+    $('header .user span').text(user.name);
 });

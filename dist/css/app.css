@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.float-left {
+  float: left;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 #wrapper {
   display: flex;
   justify-content: center;
@@ -16,4 +26,31 @@
   width: 1200px;
   height: 95%;
   border: 1px solid black;
+}
+
+header {
+  height: 70px;
+  background-color: #e8e8e8;
+}
+
+#header-left,
+#header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+#header-left {
+  width: 35%;
+  border-right: 1px solid black;
+}
+#header-left .user {
+  display: flex;
+  align-items: center;
+}
+#header-left .user img {
+  display: block;
+  height: 50px;
+  margin-right: 10px;
 }

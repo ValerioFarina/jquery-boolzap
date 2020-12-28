@@ -10,6 +10,10 @@
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
+  var user = {
+    name: 'Valerio',
+    avatar: '_user'
+  };
   var contacts = [{
     name: 'Marco',
     avatar: '_1',
@@ -131,7 +135,8 @@ $(document).ready(function () {
       status: 'sent'
     }]
   }];
-  console.log(contacts);
+  $('header .user img').attr('src', 'dist/img/avatar' + user.avatar + '.png');
+  $('header .user span').text(user.name);
 });
 
 /***/ }),
