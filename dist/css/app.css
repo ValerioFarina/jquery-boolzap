@@ -54,3 +54,30 @@ header {
   height: 50px;
   margin-right: 10px;
 }
+
+aside {
+  background-color: white;
+  width: calc(35% - 1px);
+  height: calc(95vh - 70px);
+}
+aside .contacts {
+  height: 100%;
+  overflow-y: scroll;
+}
+aside .contacts .contact {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+aside .contacts .contact:hover {
+  background-color: #6d92ce5e;
+}
+aside .contacts .contact img {
+  display: block;
+  height: 50px;
+  margin-right: 10px;
+}
+aside .contacts .contact .info span {
+  display: block;
+}

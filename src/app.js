@@ -167,4 +167,18 @@ $(document).ready(function() {
 
     $('header .user img').attr('src', 'dist/img/avatar' + user.avatar + '.png');
     $('header .user span').text(user.name);
+
+    var contactHtml = document.getElementById("contact-template").innerHTML;
+    var contactTemplate = Handlebars.compile(contactHtml);
+
+    contacts.forEach((contact) => {
+        var placeholders = {
+            imgUrl: 'dist/img/avatar' + contact.avatar + '.png',
+            name: contact.name,
+            lastMessage: contact.messages[contact.messages.length - 1].message
+        };
+
+        $('.contacts').append(contactTemplate(placeholders));
+    });
+
 });

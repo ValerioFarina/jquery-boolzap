@@ -1,0 +1,33 @@
+aside {
+    background-color: white;
+    width: calc(35% - 1px);
+    height: calc(95vh - 70px);
+
+    .contacts {
+        height: 100%;
+        overflow-y: scroll;
+
+        .contact {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #6d92ce5e;
+            }
+
+            img {
+                display: block;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .info {
+                span {
+                    display: block;
+                }
+            }
+        }
+    }
+}
