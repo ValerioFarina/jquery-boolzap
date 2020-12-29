@@ -1,6 +1,18 @@
 header {
     height: 70px;
     background-color: #e8e8e8;
+
+    img {
+        display: block;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .user,
+    .current-contact {
+        display: flex;
+        align-items: center;
+    }
 }
 
 #header-left,
@@ -14,15 +26,4 @@ header {
 #header-left {
     width: 35%;
     border-right: 1px solid black;
-
-    .user {
-        display: flex;
-        align-items: center;
-
-        img {
-            display: block;
-            height: 50px;
-            margin-right: 10px;
-        }
-    }
 }

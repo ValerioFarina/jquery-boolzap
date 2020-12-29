@@ -147,6 +147,10 @@ $(document).ready(function () {
     };
     $('.contacts').append(contactTemplate(placeholders));
   });
+  var currentIndex = 0;
+  var currentContact = contacts[currentIndex];
+  $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
+  $('.current-contact span').text(currentContact.name);
 });
 
 /***/ }),

@@ -32,6 +32,16 @@ header {
   height: 70px;
   background-color: #e8e8e8;
 }
+header img {
+  display: block;
+  height: 50px;
+  margin-right: 10px;
+}
+header .user,
+header .current-contact {
+  display: flex;
+  align-items: center;
+}
 
 #header-left,
 #header-right {
@@ -44,15 +54,6 @@ header {
 #header-left {
   width: 35%;
   border-right: 1px solid black;
-}
-#header-left .user {
-  display: flex;
-  align-items: center;
-}
-#header-left .user img {
-  display: block;
-  height: 50px;
-  margin-right: 10px;
 }
 
 aside {
@@ -80,4 +81,8 @@ aside .contacts .contact img {
 }
 aside .contacts .contact .info span {
   display: block;
+}
+aside .contacts .contact .info .last-message {
+  font-size: 12px;
+  color: grey;
 }
