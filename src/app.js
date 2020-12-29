@@ -168,8 +168,6 @@ $(document).ready(function() {
         }
     ];
 
-    console.log(dayjs('15/02/2020 8:10:22'));
-
     $('header .user img').attr('src', 'dist/img/avatar' + user.avatar + '.png');
     $('header .user span').text(user.name);
 
@@ -233,6 +231,10 @@ $(document).ready(function() {
 
             $('#chat-messages').append(messageTemplate(placeholders));
         });
+    });
+
+    $('.search input').keyup(function() {
+        console.log('hello');
     });
 
 });
