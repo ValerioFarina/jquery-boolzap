@@ -38,7 +38,9 @@
                     </aside>
 
                     <div id="chat" class="float-left">
+                        <div id="chat-messages">
 
+                        </div>
                     </div>
                 </main>
             </div>
@@ -58,6 +60,17 @@
                         {{ lastMessage }}
                     </span>
                 </div>
+            </div>
+        </script>
+
+        <script id="message-template" type="text/x-handlebars-template">
+            <div class="message">
+                <span class="text">
+                    {{ messageText }}
+                </span>
+                <span class="hour">
+                    {{ messageHour }}
+                </span>
             </div>
         </script>
     </body>

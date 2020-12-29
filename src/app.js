@@ -205,4 +205,7 @@ $(document).ready(function() {
         $('.current-contact span').text(currentContact.name);
     });
 
+    var messageHtml = document.getElementById("message-template").innerHTML;
+    var messageTemplate = Handlebars.compile(messageHtml);
+
 });

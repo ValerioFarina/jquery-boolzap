@@ -160,6 +160,8 @@ $(document).ready(function () {
     $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
     $('.current-contact span').text(currentContact.name);
   });
+  var messageHtml = document.getElementById("message-template").innerHTML;
+  var messageTemplate = Handlebars.compile(messageHtml);
 });
 
 /***/ }),
