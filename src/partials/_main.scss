@@ -3,8 +3,23 @@ aside {
     width: calc(35% - 1px);
     height: calc(95vh - 70px);
 
+    .search {
+        height: 50px;
+        padding: 10px;
+        border-bottom: 1px solid black;
+
+        button {
+            padding: 5px 10px;
+            margin-right: 5px;
+        }
+
+        input {
+            padding: 5px;
+        }
+    }
+
     .contacts {
-        height: 100%;
+        height: calc(100% - 50px);
         overflow-y: scroll;
 
         .contact {

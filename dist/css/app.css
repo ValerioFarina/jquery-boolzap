@@ -60,8 +60,20 @@ aside {
   width: calc(35% - 1px);
   height: calc(95vh - 70px);
 }
+aside .search {
+  height: 50px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+aside .search button {
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+aside .search input {
+  padding: 5px;
+}
 aside .contacts {
-  height: 100%;
+  height: calc(100% - 50px);
   overflow-y: scroll;
 }
 aside .contacts .contact {
