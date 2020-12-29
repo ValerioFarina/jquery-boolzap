@@ -105,10 +105,11 @@ aside .contacts .contact .info .last-message {
   background-image: url("../img/chat_bg.png");
   width: calc(65% + 1px);
   height: calc(95vh - 70px);
-  overflow-y: scroll;
 }
 #chat #chat-messages {
+  height: calc(100% - 60px);
   padding: 50px;
+  overflow-y: scroll;
 }
 #chat #chat-messages .message {
   position: relative;
@@ -131,4 +132,23 @@ aside .contacts .contact .info .last-message {
   right: 5px;
   font-size: 12px;
   color: grey;
+}
+#chat #send-message {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 10px;
+  background-color: #e8e8e8;
+}
+#chat #send-message input {
+  flex-grow: 1;
+  margin-right: 20px;
+  height: 100%;
+}
+#chat #send-message i {
+  font-size: 20px;
+  cursor: pointer;
+}
+#chat #send-message i:hover {
+  color: #008068;
 }

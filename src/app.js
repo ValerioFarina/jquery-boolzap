@@ -5,71 +5,54 @@ dayjs.extend(customParseFormat);
 import {contacts, user} from './partials/js/contacts.js';
 
 $(document).ready(function() {
-
-    // we add to the header the image and the name of the user
-    $('header .user img').attr('src', getImg(user.avatar));
-    $('header .user span').text(user.name);
-
     // we create the template function for the contacts
     var contactHtml = document.getElementById("contact-template").innerHTML;
     var contactTemplate = Handlebars.compile(contactHtml);
-
-    // we add the contacts in the aside
-    addContacts(contacts);
-
-    // we put the current contact equal to the first contact
-    var currentIndex = 0;
-    var currentContact = contacts[currentIndex];
-
-    // in the aside, we add the class "current" to the div corresponding to the current contact
-    $('.contact').eq(currentIndex).addClass('current');
-
-    // in the header, we add the image and the name of the current contact
-    $('.current-contact img').attr('src', getImg(currentContact.avatar));
-    $('.current-contact span').text(currentContact.name);
 
     // we create the template function for the messages
     var messageHtml = document.getElementById("message-template").innerHTML;
     var messageTemplate = Handlebars.compile(messageHtml);
 
-    // in the chat panel, we add the messages of the current contact
-    addMessages(currentContact);
+    // we add to the header the image and the name of the user
+    $('header .user img').attr('src', getImg(user.avatar));
+    $('header .user span').text(user.name);
+
+    // we add the contacts in the aside
+    addContacts(contacts);
+
+    // we set the first contact as the current contact
+    setAsCurrent($('.contact').eq(0));
 
     // when we click on a contact in the aside
-    $('.contacts').on('click', '.contact', function() {
+    $('.contact').click(function() {
         // we set this contact as the current contact
         setAsCurrent($(this));
-
-        // in the header, we add the image and the name of the current contact
-        $('.current-contact img').attr('src', getImg(currentContact.avatar));
-        $('.current-contact span').text(currentContact.name);
-
-        // in the chat panel, we add the messages of the current contact
-        addMessages(currentContact);
     });
-
-    var searched = '';
 
     // every time we insert a character in the search-bar,
     // we filter the contacts in such a way that only the contacts
     // that match the search will be displayed
     $('.search input').keyup(function() {
-        filterContacts();
+        var searched = $('.search input').val().trim().toLowerCase();
+        filterContacts(searched);
     });
 
     // when we click on the button besides the search-bar
     $('.search button').click(function() {
         // we empty the input
         $('.search input').val('');
-        searched = '';
         // we make all the contacts visible
         $('.contact').removeClass('hidden');
     });
 
-    // ********************* functions *********************
+    // ************************************************ functions ************************************************
 
     function getImg(imgId) {
         return 'dist/img/avatar' + imgId + '.png';
+    }
+
+    function getHour(date) {
+        return dayjs(date, 'DD/MM/YYYY H:mm:ss').format('H:mm')
     }
 
     function addContacts(contacts) {
@@ -101,7 +84,7 @@ $(document).ready(function() {
             // - the status (sent or received) of the message
             var placeholders = {
                 messageText: element.message,
-                messageHour: dayjs(element.date, 'DD/MM/YYYY H:mm:ss').format('H:mm'),
+                messageHour: getHour(element.date),
                 messageStatus: element.status
             };
             // using these informations, we "build" a corresponding div,
@@ -111,21 +94,39 @@ $(document).ready(function() {
     }
 
     function setAsCurrent(contact) {
+        // we remove the class "current" to every contact
         $('.contact').removeClass('current');
+        // we add the class "current" to the given contact
         contact.addClass('current');
-        currentIndex = contact.index();
-        currentContact = contacts[currentIndex];
+        // we put the variable currentIndex equal to the index of the given contact
+        var currentIndex = contact.index();
+        // we put the variable currentContact equal to the element in position currentIndex within the array contacts
+        var currentContact = contacts[currentIndex];
+
+        // in the header, we add the image and the name of the current contact
+        $('.current-contact img').attr('src', getImg(currentContact.avatar));
+        $('.current-contact span').text(currentContact.name);
+
+        // in the chat panel, we add the messages of the current contact
+        addMessages(currentContact);
     }
 
-    function filterContacts() {
-        searched = $('.search input').val().trim().toLowerCase();
+    function matchTheSearch(string, searched) {
+        return string.toLowerCase().includes(searched);
+    }
+
+    function filterContacts(searched) {
+        // for each contact
         $('.contact').each(function() {
-            if ($(this).children('.info').children('.name').text().toLowerCase().includes(searched)) {
+            // we recover its name
+            var contactName = $(this).children('.info').children('.name').text();
+            if (matchTheSearch(contactName, searched)) {
+                // if the contact's name match the search, we make the contact visible
                 $(this).removeClass('hidden');
             } else {
+                // otherwise, we hide the contact
                 $(this).addClass('hidden');
             }
         });
     }
-
 });
