@@ -61,6 +61,10 @@ $(document).ready(function () {
       var message = $('#send-message input').val();
       sendMessage(message);
     }
+  });
+  $('#send-message i').click(function () {
+    var message = $('#send-message input').val();
+    sendMessage(message);
   }); // ************************************************ functions ************************************************
 
   function getImg(imgId) {
