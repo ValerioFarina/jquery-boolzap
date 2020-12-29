@@ -185,6 +185,8 @@ $(document).ready(function() {
 
     var currentContact = contacts[currentIndex];
 
+    $('.contact').eq(currentIndex).addClass('current');
+
     $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
 
     $('.current-contact span').text(currentContact.name);
