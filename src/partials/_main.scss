@@ -28,6 +28,10 @@ aside {
             padding: 10px 20px;
             cursor: pointer;
 
+            &.hidden {
+                display: none;
+            }
+
             &:hover,
             &.current {
                 background-color: #6d92ce5e;

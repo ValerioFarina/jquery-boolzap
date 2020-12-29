@@ -187,8 +187,16 @@ $(document).ready(function () {
       $('#chat-messages').append(messageTemplate(placeholders));
     });
   });
+  var searched = '';
   $('.search input').keyup(function () {
-    console.log('hello');
+    searched = $('.search input').val().trim().toLowerCase();
+    $('.contact').each(function () {
+      if ($(this).children('.info').children('.name').text().toLowerCase().includes(searched)) {
+        $(this).removeClass('hidden');
+      } else {
+        $(this).addClass('hidden');
+      }
+    });
   });
 });
 
