@@ -17,6 +17,7 @@
     "sass-loader": "^8.0.2"
   },
   "dependencies": {
+    "dayjs": "^1.9.8",
     "express-handlebars": "^5.2.0",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1"

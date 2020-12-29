@@ -92,3 +92,28 @@ aside .contacts .contact .info .last-message {
   height: calc(95vh - 70px);
   overflow-y: scroll;
 }
+#chat #chat-messages {
+  padding: 50px;
+}
+#chat #chat-messages .message {
+  position: relative;
+  max-width: 45%;
+  padding: 20px 40px 20px 20px;
+  margin-bottom: 10px;
+  clear: both;
+}
+#chat #chat-messages .message.received {
+  float: right;
+  background-color: #91f483;
+}
+#chat #chat-messages .message.sent {
+  float: left;
+  background-color: white;
+}
+#chat #chat-messages .message .hour {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
+  color: grey;
+}

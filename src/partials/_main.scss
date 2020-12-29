@@ -43,4 +43,34 @@ aside {
     width: calc(65% + 1px);
     height: calc(95vh - 70px);
     overflow-y: scroll;
+
+    #chat-messages {
+        padding: 50px;
+
+        .message {
+            position: relative;
+            max-width: 45%;
+            padding: 20px 40px 20px 20px;
+            margin-bottom: 10px;
+            clear: both;
+
+            &.received {
+                float: right;
+                background-color: #91f483;
+            }
+
+            &.sent {
+                float: left;
+                background-color: white;
+            }
+
+            .hour {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                font-size: 12px;
+                color: grey;
+            }
+        }
+    }
 }

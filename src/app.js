@@ -1,4 +1,7 @@
 const $ = require('jquery');
+const dayjs = require('dayjs');
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 $(document).ready(function() {
     var user = {
@@ -165,6 +168,8 @@ $(document).ready(function() {
         }
     ];
 
+    console.log(dayjs('15/02/2020 8:10:22'));
+
     $('header .user img').attr('src', 'dist/img/avatar' + user.avatar + '.png');
     $('header .user span').text(user.name);
 
@@ -191,6 +196,19 @@ $(document).ready(function() {
 
     $('.current-contact span').text(currentContact.name);
 
+    var messageHtml = document.getElementById("message-template").innerHTML;
+    var messageTemplate = Handlebars.compile(messageHtml);
+
+    currentContact.messages.forEach((element) => {
+        var placeholders = {
+            messageText: element.message,
+            messageHour: dayjs(element.date).format('H:mm'),
+            messageStatus: element.status
+        };
+
+        $('#chat-messages').append(messageTemplate(placeholders));
+    });
+
     $('.contacts').on('click', '.contact', function() {
         $('.contact').removeClass('current');
 
@@ -203,9 +221,18 @@ $(document).ready(function() {
         $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
 
         $('.current-contact span').text(currentContact.name);
-    });
 
-    var messageHtml = document.getElementById("message-template").innerHTML;
-    var messageTemplate = Handlebars.compile(messageHtml);
+        $('#chat-messages').empty();
+
+        currentContact.messages.forEach((element) => {
+            var placeholders = {
+                messageText: element.message,
+                messageHour: dayjs(element.date, 'DD/MM/YYYY H:mm:ss').format('H:mm'),
+                messageStatus: element.status
+            };
+
+            $('#chat-messages').append(messageTemplate(placeholders));
+        });
+    });
 
 });
