@@ -198,6 +198,11 @@ $(document).ready(function () {
       }
     });
   });
+  $('.search button').click(function () {
+    $('.search input').val('');
+    searched = '';
+    $('.contact').removeClass('hidden');
+  });
 });
 
 /***/ }),
