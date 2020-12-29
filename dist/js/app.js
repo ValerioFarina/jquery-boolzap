@@ -11,143 +11,20 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! dayjs/plugin/customParseFormat */ "./node_modules/dayjs/plugin/customParseFormat.js");
 /* harmony import */ var dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./partials/js/contacts.js */ "./src/partials/js/contacts.js");
 var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
 
 
 dayjs.extend((dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_0___default()));
+
 $(document).ready(function () {
-  var user = {
-    name: 'Valerio',
-    avatar: '_user'
-  };
-  var contacts = [{
-    name: 'Marco',
-    avatar: '_1',
-    visible: true,
-    messages: [{
-      date: '10/01/2020 15:30:55',
-      message: 'Hai portato a spasso il cane?',
-      status: 'sent'
-    }, {
-      date: '10/01/2020 15:50:00',
-      message: 'Ricordati di dargli da mangiare',
-      status: 'sent'
-    }, {
-      date: '10/01/2020 16:15:22',
-      message: 'Tutto fatto!',
-      status: 'received'
-    }]
-  }, {
-    name: 'Fabio',
-    avatar: '_2',
-    visible: true,
-    messages: [{
-      date: '20/03/2020 16:30:00',
-      message: 'Ciao come stai?',
-      status: 'sent'
-    }, {
-      date: '20/03/2020 16:30:55',
-      message: 'Bene grazie! Stasera ci vediamo?',
-      status: 'received'
-    }, {
-      date: '20/03/2020 16:35:00',
-      message: 'Mi piacerebbe ma devo andare a fare la spesa.',
-      status: 'sent'
-    }]
-  }, {
-    name: 'Samuele',
-    avatar: '_3',
-    visible: true,
-    messages: [{
-      date: '28/03/2020 10:10:40',
-      message: 'La Marianna va in campagna',
-      status: 'received'
-    }, {
-      date: '28/03/2020 10:20:10',
-      message: 'Sicuro di non aver sbagliato chat?',
-      status: 'sent'
-    }, {
-      date: '28/03/2020 16:15:22',
-      message: 'Ah scusa!',
-      status: 'received'
-    }]
-  }, {
-    name: 'Martina',
-    avatar: '_4',
-    visible: true,
-    messages: [{
-      date: '10/01/2020 15:30:55',
-      message: 'Lo sai che ha aperto una nuova pizzeria?',
-      status: 'sent'
-    }, {
-      date: '10/01/2020 15:50:00',
-      message: 'Si, ma preferirei andare al cinema',
-      status: 'received'
-    }]
-  }, {
-    name: 'Marta',
-    avatar: '_5',
-    visible: true,
-    messages: [{
-      date: '10/01/2020 15:30:55',
-      message: 'Hai comprato il pane?',
-      status: 'sent'
-    }, {
-      date: '10/01/2020 15:50:00',
-      message: 'No, il panettiere era chiuso',
-      status: 'received'
-    }]
-  }, {
-    name: 'Andrea',
-    avatar: '_6',
-    visible: true,
-    messages: [{
-      date: '10/01/2020 15:30:55',
-      message: 'Allora che film andiamo a vedere?',
-      status: 'sent'
-    }, {
-      date: '10/01/2020 15:50:00',
-      message: 'Mi dispiace, non ho più voglia di andare al cinema',
-      status: 'received'
-    }, {
-      date: '10/01/2020 16:15:22',
-      message: 'Perfetto! Tanto neanche io volevo andarci',
-      status: 'sent'
-    }]
-  }, {
-    name: 'Antonio',
-    avatar: '_7',
-    visible: true,
-    messages: [{
-      date: '15/02/2020 16:32:55',
-      message: 'Buon compleanno Antonio',
-      status: 'sent'
-    }, {
-      date: '15/02/2020 17:50:00',
-      message: 'Grazie!!!',
-      status: 'received'
-    }]
-  }, {
-    name: 'Luca',
-    avatar: '_8',
-    visible: true,
-    messages: [{
-      date: '15/02/2020 7:12:03',
-      message: 'Mi presti la macchina?',
-      status: 'received'
-    }, {
-      date: '15/02/2020 8:10:22',
-      message: 'No',
-      status: 'sent'
-    }]
-  }];
-  $('header .user img').attr('src', 'dist/img/avatar' + user.avatar + '.png');
-  $('header .user span').text(user.name);
+  $('header .user img').attr('src', 'dist/img/avatar' + _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.user.avatar + '.png');
+  $('header .user span').text(_partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.user.name);
   var contactHtml = document.getElementById("contact-template").innerHTML;
   var contactTemplate = Handlebars.compile(contactHtml);
-  contacts.forEach(function (contact) {
+  _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.contacts.forEach(function (contact) {
     var placeholders = {
       imgUrl: 'dist/img/avatar' + contact.avatar + '.png',
       name: contact.name,
@@ -156,7 +33,7 @@ $(document).ready(function () {
     $('.contacts').append(contactTemplate(placeholders));
   });
   var currentIndex = 0;
-  var currentContact = contacts[currentIndex];
+  var currentContact = _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.contacts[currentIndex];
   $('.contact').eq(currentIndex).addClass('current');
   $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
   $('.current-contact span').text(currentContact.name);
@@ -174,7 +51,7 @@ $(document).ready(function () {
     $('.contact').removeClass('current');
     $(this).addClass('current');
     currentIndex = $(this).index();
-    currentContact = contacts[currentIndex];
+    currentContact = _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.contacts[currentIndex];
     $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
     $('.current-contact span').text(currentContact.name);
     $('#chat-messages').empty();
@@ -204,6 +81,147 @@ $(document).ready(function () {
     $('.contact').removeClass('hidden');
   });
 });
+
+/***/ }),
+
+/***/ "./src/partials/js/contacts.js":
+/*!*************************************!*\
+  !*** ./src/partials/js/contacts.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "contacts": () => /* binding */ contacts,
+/* harmony export */   "user": () => /* binding */ user
+/* harmony export */ });
+var contacts = [{
+  name: 'Marco',
+  avatar: '_1',
+  visible: true,
+  messages: [{
+    date: '10/01/2020 15:30:55',
+    message: 'Hai portato a spasso il cane?',
+    status: 'sent'
+  }, {
+    date: '10/01/2020 15:50:00',
+    message: 'Ricordati di dargli da mangiare',
+    status: 'sent'
+  }, {
+    date: '10/01/2020 16:15:22',
+    message: 'Tutto fatto!',
+    status: 'received'
+  }]
+}, {
+  name: 'Fabio',
+  avatar: '_2',
+  visible: true,
+  messages: [{
+    date: '20/03/2020 16:30:00',
+    message: 'Ciao come stai?',
+    status: 'sent'
+  }, {
+    date: '20/03/2020 16:30:55',
+    message: 'Bene grazie! Stasera ci vediamo?',
+    status: 'received'
+  }, {
+    date: '20/03/2020 16:35:00',
+    message: 'Mi piacerebbe ma devo andare a fare la spesa.',
+    status: 'sent'
+  }]
+}, {
+  name: 'Samuele',
+  avatar: '_3',
+  visible: true,
+  messages: [{
+    date: '28/03/2020 10:10:40',
+    message: 'La Marianna va in campagna',
+    status: 'received'
+  }, {
+    date: '28/03/2020 10:20:10',
+    message: 'Sicuro di non aver sbagliato chat?',
+    status: 'sent'
+  }, {
+    date: '28/03/2020 16:15:22',
+    message: 'Ah scusa!',
+    status: 'received'
+  }]
+}, {
+  name: 'Martina',
+  avatar: '_4',
+  visible: true,
+  messages: [{
+    date: '10/01/2020 15:30:55',
+    message: 'Lo sai che ha aperto una nuova pizzeria?',
+    status: 'sent'
+  }, {
+    date: '10/01/2020 15:50:00',
+    message: 'Si, ma preferirei andare al cinema',
+    status: 'received'
+  }]
+}, {
+  name: 'Marta',
+  avatar: '_5',
+  visible: true,
+  messages: [{
+    date: '10/01/2020 15:30:55',
+    message: 'Hai comprato il pane?',
+    status: 'sent'
+  }, {
+    date: '10/01/2020 15:50:00',
+    message: 'No, il panettiere era chiuso',
+    status: 'received'
+  }]
+}, {
+  name: 'Andrea',
+  avatar: '_6',
+  visible: true,
+  messages: [{
+    date: '10/01/2020 15:30:55',
+    message: 'Allora che film andiamo a vedere?',
+    status: 'sent'
+  }, {
+    date: '10/01/2020 15:50:00',
+    message: 'Mi dispiace, non ho più voglia di andare al cinema',
+    status: 'received'
+  }, {
+    date: '10/01/2020 16:15:22',
+    message: 'Perfetto! Tanto neanche io volevo andarci',
+    status: 'sent'
+  }]
+}, {
+  name: 'Antonio',
+  avatar: '_7',
+  visible: true,
+  messages: [{
+    date: '15/02/2020 16:32:55',
+    message: 'Buon compleanno Antonio',
+    status: 'sent'
+  }, {
+    date: '15/02/2020 17:50:00',
+    message: 'Grazie!!!',
+    status: 'received'
+  }]
+}, {
+  name: 'Luca',
+  avatar: '_8',
+  visible: true,
+  messages: [{
+    date: '15/02/2020 7:12:03',
+    message: 'Mi presti la macchina?',
+    status: 'received'
+  }, {
+    date: '15/02/2020 8:10:22',
+    message: 'No',
+    status: 'sent'
+  }]
+}];
+var user = {
+  name: 'Valerio',
+  avatar: '_user'
+};
+
 
 /***/ }),
 
