@@ -20,7 +20,9 @@ var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js"
 dayjs.extend((dayjs_plugin_customParseFormat__WEBPACK_IMPORTED_MODULE_0___default()));
 
 $(document).ready(function () {
-  // we create the template function for the contacts
+  var currentIndex;
+  var currentContact; // we create the template function for the contacts
+
   var contactHtml = document.getElementById("contact-template").innerHTML;
   var contactTemplate = Handlebars.compile(contactHtml); // we create the template function for the messages
 
@@ -113,9 +115,9 @@ $(document).ready(function () {
 
     contact.addClass('current'); // we put the variable currentIndex equal to the index of the given contact
 
-    var currentIndex = contact.index(); // we put the variable currentContact equal to the element in position currentIndex within the array contacts
+    currentIndex = contact.index(); // we put the variable currentContact equal to the element in position currentIndex within the array contacts
 
-    var currentContact = _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.contacts[currentIndex]; // in the header, we add the image and the name of the current contact
+    currentContact = _partials_js_contacts_js__WEBPACK_IMPORTED_MODULE_1__.contacts[currentIndex]; // in the header, we add the image and the name of the current contact
 
     $('.current-contact img').attr('src', getImg(currentContact.avatar));
     $('.current-contact span').text(currentContact.name); // in the chat panel, we add the messages of the current contact
@@ -145,7 +147,19 @@ $(document).ready(function () {
 
   function sendMessage(message) {
     $('#send-message input').val('');
-    console.log(message);
+    var now = dayjs();
+    var newMessage = {
+      date: now.format('DD/MM/YYYY H:mm:ss'),
+      message: message,
+      status: 'received'
+    };
+    currentContact.messages.push(newMessage);
+    var placeholders = {
+      messageText: message,
+      messageHour: getHour(now),
+      messageStatus: 'received'
+    };
+    $('#chat-messages').append(messageTemplate(placeholders));
   }
 });
 

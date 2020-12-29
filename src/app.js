@@ -5,6 +5,9 @@ dayjs.extend(customParseFormat);
 import {contacts, user} from './partials/js/contacts.js';
 
 $(document).ready(function() {
+    var currentIndex;
+    var currentContact;
+
     // we create the template function for the contacts
     var contactHtml = document.getElementById("contact-template").innerHTML;
     var contactTemplate = Handlebars.compile(contactHtml);
@@ -60,7 +63,7 @@ $(document).ready(function() {
     }
 
     function getHour(date) {
-        return dayjs(date, 'DD/MM/YYYY H:mm:ss').format('H:mm')
+        return dayjs(date, 'DD/MM/YYYY H:mm:ss').format('H:mm');
     }
 
     function addContacts(contacts) {
@@ -107,9 +110,9 @@ $(document).ready(function() {
         // we add the class "current" to the given contact
         contact.addClass('current');
         // we put the variable currentIndex equal to the index of the given contact
-        var currentIndex = contact.index();
+        currentIndex = contact.index();
         // we put the variable currentContact equal to the element in position currentIndex within the array contacts
-        var currentContact = contacts[currentIndex];
+        currentContact = contacts[currentIndex];
 
         // in the header, we add the image and the name of the current contact
         $('.current-contact img').attr('src', getImg(currentContact.avatar));
@@ -140,6 +143,18 @@ $(document).ready(function() {
 
     function sendMessage(message) {
         $('#send-message input').val('');
-        console.log(message);
+        var now = dayjs();
+        var newMessage = {
+            date: now.format('DD/MM/YYYY H:mm:ss'),
+            message: message,
+            status: 'received'
+        };
+        currentContact.messages.push(newMessage);
+        var placeholders = {
+            messageText: message,
+            messageHour: getHour(now),
+            messageStatus: 'received'
+        };
+        $('#chat-messages').append(messageTemplate(placeholders));
     }
 });
