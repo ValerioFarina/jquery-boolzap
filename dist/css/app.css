@@ -71,7 +71,7 @@ aside .contacts .contact {
   padding: 10px 20px;
   cursor: pointer;
 }
-aside .contacts .contact:hover {
+aside .contacts .contact:hover, aside .contacts .contact.current {
   background-color: #6d92ce5e;
 }
 aside .contacts .contact img {
