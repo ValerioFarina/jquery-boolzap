@@ -153,7 +153,12 @@ $(document).ready(function () {
   $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
   $('.current-contact span').text(currentContact.name);
   $('.contacts').on('click', '.contact', function () {
-    console.log(this);
+    $('.contact').removeClass('current');
+    $(this).addClass('current');
+    currentIndex = $(this).index();
+    currentContact = contacts[currentIndex];
+    $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
+    $('.current-contact span').text(currentContact.name);
   });
 });
 
