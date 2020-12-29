@@ -45,6 +45,14 @@ $(document).ready(function() {
         $('.contact').removeClass('hidden');
     });
 
+    $('#send-message input').keypress(function(e) {
+        var key = e.which;
+        if (key == 13) {
+            var message = $('#send-message input').val();
+            sendMessage(message);
+        }
+    });
+
     // ************************************************ functions ************************************************
 
     function getImg(imgId) {
@@ -128,5 +136,10 @@ $(document).ready(function() {
                 $(this).addClass('hidden');
             }
         });
+    }
+
+    function sendMessage(message) {
+        $('#send-message input').val('');
+        console.log(message);
     }
 });

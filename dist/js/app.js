@@ -51,6 +51,14 @@ $(document).ready(function () {
     $('.search input').val(''); // we make all the contacts visible
 
     $('.contact').removeClass('hidden');
+  });
+  $('#send-message input').keypress(function (e) {
+    var key = e.which;
+
+    if (key == 13) {
+      var message = $('#send-message input').val();
+      sendMessage(message);
+    }
   }); // ************************************************ functions ************************************************
 
   function getImg(imgId) {
@@ -133,6 +141,11 @@ $(document).ready(function () {
         $(this).addClass('hidden');
       }
     });
+  }
+
+  function sendMessage(message) {
+    $('#send-message input').val('');
+    console.log(message);
   }
 });
 
