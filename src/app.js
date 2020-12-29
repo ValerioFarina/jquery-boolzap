@@ -191,4 +191,8 @@ $(document).ready(function() {
 
     $('.current-contact span').text(currentContact.name);
 
+    $('.contacts').on('click', '.contact', function() {
+        console.log(this);
+    });
+
 });

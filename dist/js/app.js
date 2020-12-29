@@ -152,6 +152,9 @@ $(document).ready(function () {
   $('.contact').eq(currentIndex).addClass('current');
   $('.current-contact img').attr('src', 'dist/img/avatar' + currentContact.avatar + '.png');
   $('.current-contact span').text(currentContact.name);
+  $('.contacts').on('click', '.contact', function () {
+    console.log(this);
+  });
 });
 
 /***/ }),
