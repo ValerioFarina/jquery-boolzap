@@ -37,3 +37,10 @@ aside {
         }
     }
 }
+
+#chat {
+    background-image: url('../img/chat_bg.png');
+    width: calc(65% + 1px);
+    height: calc(95vh - 70px);
+    overflow-y: scroll;
+}
