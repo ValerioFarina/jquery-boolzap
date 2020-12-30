@@ -98,26 +98,35 @@ $(document).ready(function () {
     });
   }
 
-  function addMessages(contact) {
-    // we empty the chat panel
+  function appendMessage(messageText, messageHour, messageStatus) {
+    var placeholders = {
+      messageText: messageText,
+      messageHour: messageHour,
+      messageStatus: messageStatus
+    };
+    $('.container-messages').append(messageTemplate(placeholders));
+  }
+
+  function appendMessages(contact) {
+    // we remove the messages' container
     $('.container-messages').remove();
     $('#chat').prepend(chatTemplate({
       'chat-id': currentIndex
     })); // for each message of the current contact
 
     contact.messages.forEach(function (element) {
-      // we get
-      // - the text of the message
-      // - the hour the message has been sent/received
-      // - the status (sent or received) of the message
-      var placeholders = {
-        messageText: element.message,
-        messageHour: getHour(element.date),
-        messageStatus: element.status
-      }; // using these informations, we "build" a corresponding div,
-      // and we append it to the div with id "chat-messages"
-
-      $('.container-messages').append(messageTemplate(placeholders));
+      appendMessage(element.message, getHour(element.date), element.status); // // we get
+      // // - the text of the message
+      // // - the hour the message has been sent/received
+      // // - the status (sent or received) of the message
+      // var placeholders = {
+      //     messageText: element.message,
+      //     messageHour: getHour(element.date),
+      //     messageStatus: element.status
+      // };
+      // // using these informations, we "build" a corresponding div,
+      // // and we append it to the div with id "chat-messages"
+      // $('.container-messages').append(messageTemplate(placeholders));
     });
   }
 
@@ -134,7 +143,7 @@ $(document).ready(function () {
     $('.current-contact img').attr('src', getImg(currentContact.avatar));
     $('.current-contact span').text(currentContact.name); // in the chat panel, we add the messages of the current contact
 
-    addMessages(currentContact);
+    appendMessages(currentContact);
   }
 
   function matchTheSearch(string, searched) {
@@ -166,12 +175,12 @@ $(document).ready(function () {
       status: 'received'
     };
     currentContact.messages.push(newMessage);
-    var placeholders = {
-      messageText: message,
-      messageHour: getHour(now),
-      messageStatus: 'received'
-    };
-    $('.container-messages').append(messageTemplate(placeholders));
+    appendMessage(message, getHour(now), 'received'); // var placeholders = {
+    //     messageText: message,
+    //     messageHour: getHour(now),
+    //     messageStatus: 'received'
+    // };
+    // $('.container-messages').append(messageTemplate(placeholders));
   }
 
   function reply() {
@@ -187,12 +196,12 @@ $(document).ready(function () {
       activeContact.messages.push(newMessage);
 
       if ($('.container-messages').attr('id') == activeChat) {
-        var placeholders = {
-          messageText: 'ok',
-          messageHour: getHour(now),
-          messageStatus: 'sent'
-        };
-        $('.container-messages').append(messageTemplate(placeholders));
+        appendMessage('ok', getHour(now), 'sent'); // var placeholders = {
+        //     messageText: 'ok',
+        //     messageHour: getHour(now),
+        //     messageStatus: 'sent'
+        // };
+        // $('.container-messages').append(messageTemplate(placeholders));
       }
     }, 2000);
   }
