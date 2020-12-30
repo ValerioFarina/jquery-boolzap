@@ -164,15 +164,25 @@ $(document).ready(function() {
         });
     }
 
+    function addMessage(message, date, status, contact) {
+        var newMessage = {
+            message,
+            date,
+            status
+        };
+        contact.messages.push(newMessage);
+    }
+
     function sendMessage(message) {
         $('#send-message input').val('');
         var now = dayjs();
-        var newMessage = {
-            date: now.format('DD/MM/YYYY H:mm:ss'),
-            message: message,
-            status: 'received'
-        };
-        currentContact.messages.push(newMessage);
+        addMessage(message, now.format('DD/MM/YYYY H:mm:ss'), 'received', currentContact);
+        // var newMessage = {
+        //     date: now.format('DD/MM/YYYY H:mm:ss'),
+        //     message: message,
+        //     status: 'received'
+        // };
+        // currentContact.messages.push(newMessage);
         appendMessage(message, getHour(now), 'received');
         // var placeholders = {
         //     messageText: message,
@@ -187,12 +197,13 @@ $(document).ready(function() {
         var activeChat = currentIndex;
         setTimeout(function() {
             var now = dayjs();
-            var newMessage = {
-                date: now.format('DD/MM/YYYY H:mm:ss'),
-                message: 'ok',
-                status: 'sent'
-            };
-            activeContact.messages.push(newMessage);
+            addMessage('ok', now.format('DD/MM/YYYY H:mm:ss'), 'sent', activeContact);
+            // var newMessage = {
+            //     date: now.format('DD/MM/YYYY H:mm:ss'),
+            //     message: 'ok',
+            //     status: 'sent'
+            // };
+            // activeContact.messages.push(newMessage);
             if ($('.container-messages').attr('id') == activeChat) {
                 appendMessage('ok', getHour(now), 'sent');
                 // var placeholders = {
