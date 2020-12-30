@@ -71,10 +71,17 @@ $(document).ready(function () {
     sendMessage(message);
     reply();
   });
-  $('.container-messages').on('click', '.trash', function () {
+  var selectedMessage;
+  $('#chat').on('click', '.trash', function () {
+    selectedMessage = $(this).parent();
     $('.overlay').removeClass('hidden');
   });
   $('.delete-message .no').click(function () {
+    $('.overlay').addClass('hidden');
+  });
+  $('.delete-message .yes').click(function () {
+    currentContact.messages.splice(selectedMessage.index(), 1);
+    selectedMessage.remove();
     $('.overlay').addClass('hidden');
   }); // ************************************************ functions ************************************************
 
