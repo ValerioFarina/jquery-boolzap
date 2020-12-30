@@ -109,24 +109,15 @@ $(document).ready(function () {
 
   function appendMessages(contact) {
     // we remove the messages' container
-    $('.container-messages').remove();
+    $('.container-messages').remove(); // we prepend to the div with id "chat" a messages' container having the currentIndex as id
+
     $('#chat').prepend(chatTemplate({
       'chat-id': currentIndex
     })); // for each message of the current contact
 
     contact.messages.forEach(function (element) {
-      appendMessage(element.message, getHour(element.date), element.status); // // we get
-      // // - the text of the message
-      // // - the hour the message has been sent/received
-      // // - the status (sent or received) of the message
-      // var placeholders = {
-      //     messageText: element.message,
-      //     messageHour: getHour(element.date),
-      //     messageStatus: element.status
-      // };
-      // // using these informations, we "build" a corresponding div,
-      // // and we append it to the div with id "chat-messages"
-      // $('.container-messages').append(messageTemplate(placeholders));
+      // we append the message to the messages' container
+      appendMessage(element.message, getHour(element.date), element.status);
     });
   }
 
@@ -176,21 +167,14 @@ $(document).ready(function () {
   }
 
   function sendMessage(message) {
-    $('#send-message input').val('');
-    var now = dayjs();
-    addMessage(message, now.format('DD/MM/YYYY H:mm:ss'), 'received', currentContact); // var newMessage = {
-    //     date: now.format('DD/MM/YYYY H:mm:ss'),
-    //     message: message,
-    //     status: 'received'
-    // };
-    // currentContact.messages.push(newMessage);
+    // we reset the input used to send new messages
+    $('#send-message input').val(''); // we get the current time
 
-    appendMessage(message, getHour(now), 'received'); // var placeholders = {
-    //     messageText: message,
-    //     messageHour: getHour(now),
-    //     messageStatus: 'received'
-    // };
-    // $('.container-messages').append(messageTemplate(placeholders));
+    var now = dayjs(); // we add a new message to the currentContact
+
+    addMessage(message, now.format('DD/MM/YYYY H:mm:ss'), 'received', currentContact); // we append to the messages' container a div corresponding to this new message
+
+    appendMessage(message, getHour(now), 'received');
   }
 
   function reply() {
@@ -198,20 +182,10 @@ $(document).ready(function () {
     var activeChat = currentIndex;
     setTimeout(function () {
       var now = dayjs();
-      addMessage('ok', now.format('DD/MM/YYYY H:mm:ss'), 'sent', activeContact); // var newMessage = {
-      //     date: now.format('DD/MM/YYYY H:mm:ss'),
-      //     message: 'ok',
-      //     status: 'sent'
-      // };
-      // activeContact.messages.push(newMessage);
+      addMessage('ok', now.format('DD/MM/YYYY H:mm:ss'), 'sent', activeContact);
 
       if ($('.container-messages').attr('id') == activeChat) {
-        appendMessage('ok', getHour(now), 'sent'); // var placeholders = {
-        //     messageText: 'ok',
-        //     messageHour: getHour(now),
-        //     messageStatus: 'sent'
-        // };
-        // $('.container-messages').append(messageTemplate(placeholders));
+        appendMessage('ok', getHour(now), 'sent');
       }
     }, 2000);
   }

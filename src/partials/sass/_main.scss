@@ -84,12 +84,29 @@ aside {
                 background-color: white;
             }
 
+            &:hover .hour {
+                display: none;
+            }
+
+            &:hover .trash {
+                display: inline;
+            }
+
             .hour {
                 position: absolute;
                 top: 5px;
                 right: 5px;
                 font-size: 12px;
                 color: grey;
+            }
+
+            .trash {
+                display: none;
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                cursor: pointer;
             }
         }
     }

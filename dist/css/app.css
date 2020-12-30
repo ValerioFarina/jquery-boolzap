@@ -126,12 +126,26 @@ aside .contacts .contact .info .last-message {
   float: left;
   background-color: white;
 }
+#chat .container-messages .message:hover .hour {
+  display: none;
+}
+#chat .container-messages .message:hover .trash {
+  display: inline;
+}
 #chat .container-messages .message .hour {
   position: absolute;
   top: 5px;
   right: 5px;
   font-size: 12px;
   color: grey;
+}
+#chat .container-messages .message .trash {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 #chat #send-message {
   display: flex;
