@@ -72,6 +72,10 @@ $(document).ready(function() {
         $('.overlay').removeClass('hidden');
     });
 
+    $('.delete-message .no').click(function() {
+        $('.overlay').addClass('hidden');
+    });
+
     // ************************************************ functions ************************************************
 
     function getImg(imgId) {
