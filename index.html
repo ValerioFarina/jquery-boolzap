@@ -45,9 +45,7 @@
                     </aside>
 
                     <div id="chat" class="float-left">
-                        <div id="chat-messages" class="clearfix">
 
-                        </div>
 
                         <div id="send-message">
                             <input placeholder="Scrivi un messaggio">
@@ -72,6 +70,12 @@
                         {{ lastMessage }}
                     </span>
                 </div>
+            </div>
+        </script>
+
+        <script id="chat-template" type="text/x-handlebars-template">
+            <div class="container-messages clearfix" id="{{ chat-id }}">
+
             </div>
         </script>
 

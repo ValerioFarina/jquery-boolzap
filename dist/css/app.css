@@ -106,27 +106,27 @@ aside .contacts .contact .info .last-message {
   width: calc(65% + 1px);
   height: calc(95vh - 70px);
 }
-#chat #chat-messages {
+#chat .container-messages {
   height: calc(100% - 60px);
   padding: 50px;
   overflow-y: scroll;
 }
-#chat #chat-messages .message {
+#chat .container-messages .message {
   position: relative;
   max-width: 45%;
   padding: 20px 40px 20px 20px;
   margin-bottom: 10px;
   clear: both;
 }
-#chat #chat-messages .message.received {
+#chat .container-messages .message.received {
   float: right;
   background-color: #91f483;
 }
-#chat #chat-messages .message.sent {
+#chat .container-messages .message.sent {
   float: left;
   background-color: white;
 }
-#chat #chat-messages .message .hour {
+#chat .container-messages .message .hour {
   position: absolute;
   top: 5px;
   right: 5px;

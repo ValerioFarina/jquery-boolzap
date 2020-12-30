@@ -62,7 +62,7 @@ aside {
     width: calc(65% + 1px);
     height: calc(95vh - 70px);
 
-    #chat-messages {
+    .container-messages {
         height: calc(100% - 60px);
         padding: 50px;
         overflow-y: scroll;

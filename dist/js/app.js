@@ -24,7 +24,10 @@ $(document).ready(function () {
   var currentContact; // we create the template function for the contacts
 
   var contactHtml = document.getElementById("contact-template").innerHTML;
-  var contactTemplate = Handlebars.compile(contactHtml); // we create the template function for the messages
+  var contactTemplate = Handlebars.compile(contactHtml); // we create the template function for the messages' container
+
+  var chatHtml = document.getElementById("chat-template").innerHTML;
+  var chatTemplate = Handlebars.compile(chatHtml); // we create the template function for the messages
 
   var messageHtml = document.getElementById("message-template").innerHTML;
   var messageTemplate = Handlebars.compile(messageHtml); // we add to the header the image and the name of the user
@@ -60,11 +63,13 @@ $(document).ready(function () {
     if (key == 13) {
       var message = $('#send-message input').val();
       sendMessage(message);
+      reply();
     }
   });
   $('#send-message i').click(function () {
     var message = $('#send-message input').val();
     sendMessage(message);
+    reply();
   }); // ************************************************ functions ************************************************
 
   function getImg(imgId) {
@@ -95,7 +100,10 @@ $(document).ready(function () {
 
   function addMessages(contact) {
     // we empty the chat panel
-    $('#chat-messages').empty(); // for each message of the current contact
+    $('.container-messages').remove();
+    $('#chat').prepend(chatTemplate({
+      'chat-id': currentIndex
+    })); // for each message of the current contact
 
     contact.messages.forEach(function (element) {
       // we get
@@ -109,7 +117,7 @@ $(document).ready(function () {
       }; // using these informations, we "build" a corresponding div,
       // and we append it to the div with id "chat-messages"
 
-      $('#chat-messages').append(messageTemplate(placeholders));
+      $('.container-messages').append(messageTemplate(placeholders));
     });
   }
 
@@ -163,7 +171,30 @@ $(document).ready(function () {
       messageHour: getHour(now),
       messageStatus: 'received'
     };
-    $('#chat-messages').append(messageTemplate(placeholders));
+    $('.container-messages').append(messageTemplate(placeholders));
+  }
+
+  function reply() {
+    var activeContact = currentContact;
+    var activeChat = currentIndex;
+    setTimeout(function () {
+      var now = dayjs();
+      var newMessage = {
+        date: now.format('DD/MM/YYYY H:mm:ss'),
+        message: 'ok',
+        status: 'sent'
+      };
+      activeContact.messages.push(newMessage);
+
+      if ($('.container-messages').attr('id') == activeChat) {
+        var placeholders = {
+          messageText: 'ok',
+          messageHour: getHour(now),
+          messageStatus: 'sent'
+        };
+        $('.container-messages').append(messageTemplate(placeholders));
+      }
+    }, 2000);
   }
 });
 
