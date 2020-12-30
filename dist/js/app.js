@@ -72,7 +72,7 @@ $(document).ready(function () {
     reply();
   });
   $('.container-messages').on('click', '.trash', function () {
-    console.log('cliccato');
+    $('.overlay').removeClass('hidden');
   }); // ************************************************ functions ************************************************
 
   function getImg(imgId) {

@@ -69,7 +69,7 @@ $(document).ready(function() {
     });
 
     $('.container-messages').on('click', '.trash', function() {
-        console.log('cliccato');
+        $('.overlay').removeClass('hidden');
     });
 
     // ************************************************ functions ************************************************
