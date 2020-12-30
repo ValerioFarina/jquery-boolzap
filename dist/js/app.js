@@ -70,6 +70,9 @@ $(document).ready(function () {
     var message = $('#send-message input').val();
     sendMessage(message);
     reply();
+  });
+  $('.container-messages').on('click', '.trash', function () {
+    console.log('cliccato');
   }); // ************************************************ functions ************************************************
 
   function getImg(imgId) {

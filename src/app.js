@@ -68,6 +68,10 @@ $(document).ready(function() {
         reply();
     });
 
+    $('.container-messages').on('click', '.trash', function() {
+        console.log('cliccato');
+    });
+
     // ************************************************ functions ************************************************
 
     function getImg(imgId) {
@@ -185,5 +189,5 @@ $(document).ready(function() {
             }
         }, 2000);
     }
-    
+
 });
